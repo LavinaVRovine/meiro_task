@@ -1,0 +1,102 @@
+
+version: 2
+
+models:
+  - name: users
+    description: "Unique users model"
+    columns:
+      - name: id
+        description: "User id"
+        data_tests:
+          - unique
+          - not_null
+      - name: name
+        description: "User name"
+      - name: city  # TODO: do i want to make another dim table?
+        description: "User's city"
+  - name: products
+    description: Unique products; Implicit assumption on on the price being constant has been made
+    columns:
+      - name: id
+        description: Product id
+        data_tests:
+          - unique
+          - not_null
+      - name: name
+        description: Product name
+
+      - name: price
+        description: Product price
+        data_tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              min_value: 0
+              inclusive: false
+  - name: product_order
+    description: Expanded orders where each row is a purchased item info
+    columns:
+      - name: order_id
+        description: whole order id
+      - name: user_id
+        description: fk of a user
+      - name: created_ts
+        description: Probably order creation time
+      - name: product_id
+        description: fk of a product
+  - name: full_denom
+    description: View made for exploration in python
+    columns:
+      - name: order_id
+        description: whole order id
+      - name: user_id
+        description: fk of a user
+      - name: created_ts
+        description: Probably order creation time
+      - name: product_id
+        description: fk of a product
+      - name: product_name
+        description: name of the product
+      - name: price
+        description: product price
+      - name: user_name
+      - name: user_city
+
+
+sources:
+  - name: raw
+    schema: public
+    tables:
+      - name: raw
+        columns:
+          - name: id
+            tests:
+              - not_null
+              - unique
+          - name: created
+            tests:
+              - not_null
+          - name: products
+          - name: user
+
+exposures:
+  - name: q1
+    type: analysis
+    label: Attempt at answer to first question
+    depends_on:
+      - ref('full_denom')
+    owner:
+      name: Pavel
+
+  - name: q2
+    type: analysis
+    label: Attempt at answer to second question
+    depends_on:
+      - ref('full_denom')
+    owner:
+      name: Pavel
+  - name: streamlit dashboard
+    type: application
+    depends_on:
+      - ref('full_denom')
+    owner:
+      name: Pavel

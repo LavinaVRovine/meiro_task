@@ -1,0 +1,12 @@
+meiro_dbt:
+  outputs:
+    dev:
+      dbname: meiro
+      host: localhost
+      pass: postgres
+      port: 5436
+      schema: public
+      threads: 1
+      type: postgres
+      user: postgres
+  target: dev
