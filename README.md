@@ -110,8 +110,8 @@ Visually:
 While writing above, I've realized you probably don't care about the viz nor the python code, so here is SQL code you were probably interested in:
 I've added simple SQL statements as dbt analyses.
 
-[Q1](meiro_dbt/analyses/q1.sql))
+[Q1](meiro_dbt/analyses/q1.sql)
 
-[Q2](meiro_dbt/analyses/q2.sql))
+[Q2](meiro_dbt/analyses/q2.sql)
 
-# End
+ [Dbt docs here](https://lavinavrovine.github.io/meiro_task/meiro_dbt/target/#!/overview)
