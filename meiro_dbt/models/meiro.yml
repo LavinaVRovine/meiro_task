@@ -78,6 +78,19 @@ sources:
           - name: products
           - name: user
 
+analyses:
+  - name: q1
+    description: Attempt at answer to first question
+    columns:
+      - name: user_name
+      - name: spent
+  - name: q2
+    description: Attempt at answer to second question
+    columns:
+      - name: user_city,
+      - name: product_name,
+      - name: product_count
+
 exposures:
   - name: q1
     type: analysis
@@ -96,6 +109,7 @@ exposures:
       name: Pavel
   - name: streamlit dashboard
     type: application
+    description: locally ran application to show answer to to questions
     depends_on:
       - ref('full_denom')
     owner:

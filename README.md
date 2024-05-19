@@ -67,6 +67,7 @@ hence [here](meiro_dbt/models/full_denom.sql) is a view definition of the view u
 the purpose of this concrete task and the way it has been approached it is a bit of [link](https://content.imageresizer.com/images/memes/rick-and-morty-slavery-with-extra-steps-meme-1jihm4.jpg). Hope this made you laugh a bit.
    7. Added dbt metadata&description. Defined [here](meiro_dbt/models/meiro.yml) 
       1. One important note here are the tests. Iam making certain assumption in the python code. These test allow me to for instance group on name, which is normally quite problematic!
+   8. I've taken target directory out of gitignore and setup a github page. [Here](https://lavinavrovine.github.io/meiro_task/meiro_dbt/target/#!/overview) should be the docs generated!
 4. Created python script/streamlit app to answer the questions. Script is [here](main.py)
    1. Loaded data into pandas DF
    2. Calculated necessary statistics (see bellow)
